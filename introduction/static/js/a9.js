@@ -41,5 +41,5 @@ event3 = function(){
             document.getElementById("a9_d3").appendChild(li);
         }
     })
-    .catch(error => console.log('error', error));
+    .catch(error => console.log('error', error.message));
     }
