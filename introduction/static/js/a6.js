@@ -18,7 +18,7 @@ event5 = function(){
             alert("code saved");
         }  // parse JSON string into object
     })
-    .catch(error => console.log('error', error));
+    .catch(error => console.log('error'));
 }
 
 event6 = function(){
@@ -37,7 +37,6 @@ event6 = function(){
     .then(response => response.text())
     .then(result => {
         let data = JSON.parse(result);  // parse JSON string into object
-        console.log(data.vulns);
         document.getElementById("a6_d5").style.display = 'flex';
         // document.getElementById("a6_d5").innerText =  data.vulns;
 
@@ -49,6 +48,6 @@ event6 = function(){
         }
         
     })
-    .catch(error => console.log('error', error));
+    .catch(error => console.log('error'));
 }
 
