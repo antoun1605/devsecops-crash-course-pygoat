@@ -4,6 +4,7 @@ on: [push]
 
 permissions:
   contents: read
+  security-events: write
   
 jobs:
   sast_scan:
