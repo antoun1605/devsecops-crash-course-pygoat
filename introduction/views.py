@@ -352,7 +352,7 @@ def ba_lab(request):
                         "data":"0NLY_F0R_4DM1N5",
                         "username": "admin"
                     })
-                html.set_cookie("admin", "1",max_age=200)
+                html.set_cookie("admin", "1",max_age=200, secure=True, httponly=True)
                 return html
             elif login.objects.filter(user=name,password=password):
                 html = render(
@@ -362,7 +362,7 @@ def ba_lab(request):
                     "not_admin":"No Secret key for this User",
                     "username": name
                 })
-                html.set_cookie("admin", "0",max_age=200)
+                html.set_cookie("admin", "0",max_age=200, secure=True, httponly=True)
                 return html
             else:
                 return render(request, 'Lab/BrokenAccess/ba_lab.html', {"data": "User Not Found"})
@@ -489,7 +489,7 @@ def Otp(request):
             if email=="admin@pygoat.com":
                 otp.objects.filter(id=2).update(otp=otpN)
                 html = render(request, "Lab/BrokenAuth/otp.html", {"otp":"Sent To Admin Mail ID"})
-                html.set_cookie("email", email)
+                html.set_cookie("email", email, secure=True, httponly=True)
                 return html
 
             else:
@@ -762,7 +762,7 @@ def a1_broken_access_lab_1(request):
                 "not_admin":"No Secret key for this User",
                 "username": name
             })
-            html.set_cookie("admin", "0",max_age=200)
+            html.set_cookie("admin", "0",max_age=200, secure=True, httponly=True)
             return html
         else:
             return render(request, 'Lab_2021/A1_BrokenAccessControl/broken_access_lab_1.html', {"data": "User Not Found"})
