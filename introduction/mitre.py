@@ -171,7 +171,7 @@ def csrf_lab_login(request):
             return redirect('/mitre/9/lab/login')
 
 @authentication_decorator
-@csrf_exempt
+ 
 def csrf_transfer_monei(request):
     if request.method == 'GET':
         try:
@@ -208,7 +208,7 @@ def csrf_transfer_monei_api(request,recipent,amount):
 
 
 # @authentication_decorator
-@csrf_exempt
+ 
 def mitre_lab_25_api(request):
     if request.method == "POST":
         expression = request.POST.get('expression')
@@ -231,7 +231,7 @@ def command_out(command):
     return process.communicate()
     
 
-@csrf_exempt
+ 
 def mitre_lab_17_api(request):
     if request.method == "POST":
         ip = request.POST.get('ip')
