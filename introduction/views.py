@@ -495,7 +495,7 @@ def Otp(request):
             else:
                 otp.objects.filter(id=1).update(email=email, otp=otpN)
                 html=render (request,"Lab/BrokenAuth/otp.html",{"otp":otpN})
-                html.set_cookie("email",email)
+                html.set_cookie("email",email, secure=True, httponly=True)
                 return html
         else:
             return render(request,"Lab/BrokenAuth/otp.html")
