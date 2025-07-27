@@ -33,7 +33,6 @@ event3 = function(){
     .then(response => response.text())
     .then(result => {
         let data = JSON.parse(result);  // parse JSON string into object
-        console.log(data.logs);
         document.getElementById("a9_d3").style.display = 'flex';
         for (var i = 0; i < data.logs.length; i++) {
             var li = document.createElement("li");
