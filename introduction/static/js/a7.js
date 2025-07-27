@@ -18,7 +18,6 @@ event4 = function(){
     .then(response => response.text())
     .then(result => {
         let data = JSON.parse(result);  // parse JSON string into object
-        console.log(data);
         document.getElementById("a7_d4").style.display = 'flex';
         document.getElementById("a7_d4").innerText =  "Result: " + data.message;
         
