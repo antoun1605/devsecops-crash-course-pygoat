@@ -23,5 +23,5 @@ event4 = function(){
         document.getElementById("a7_d4").innerText =  "Result: " + data.message;
         
     }
-    ).catch(error => console.log('error', error.message));
+    ).catch(error => console.log('error');
 }
