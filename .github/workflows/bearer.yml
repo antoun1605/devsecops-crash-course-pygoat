@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  sast_scan:
+    name: Bearer Scan
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Install Bearer
+      uses: bearer/bearer-action@v2
