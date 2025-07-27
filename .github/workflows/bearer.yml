@@ -2,6 +2,9 @@ name: CI
 
 on: [push]
 
+permissions:
+  contents: read
+  
 jobs:
   sast_scan:
     name: Bearer Scan
@@ -22,12 +25,3 @@ jobs:
       uses: github/codeql-action/upload-sarif@v3
       with:
         sarif_file: results.sarif
-
-
-    - name: Upload SARIF as artifact
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: bearer-sarif
-        path: results.sarif
-
