@@ -7,6 +7,7 @@ from requests.structures import CaseInsensitiveDict
 from django.contrib.auth import login,authenticate
 from django.contrib.auth.forms import UserCreationForm
 import random
+import secrets
 import string
 import os
 from hashlib import sha256
@@ -17,6 +18,7 @@ from django.contrib import messages
 
 from .models import  FAANG,info,login,comments,otp
 from random import randint
+from secrets import randbelow
 from xml.dom.pulldom import parseString, START_ELEMENT
 from xml.sax.handler import feature_external_ges
 from xml.sax import make_parser
@@ -484,7 +486,7 @@ def login_otp(request):
 def Otp(request):
     if request.method=="GET":
         email=request.GET.get('email')
-        otpN=randint(100,999)
+        otpN= 100 + randbelow(900)
         if email and otpN:
             if email=="admin@pygoat.com":
                 otp.objects.filter(id=2).update(otp=otpN)
@@ -668,7 +670,7 @@ def a10_lab2(request):
 #*********************************************************A11*************************************************#
 
 def gentckt():
-    return (''.join(random.choices(string.ascii_uppercase + string.ascii_lowercase, k=10)))
+    return (''.join(secrets.choices(string.ascii_uppercase + string.ascii_lowercase, k=10)))
 
 def insec_desgine(request):
     if request.user.is_authenticated:
