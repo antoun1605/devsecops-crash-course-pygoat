@@ -205,7 +205,7 @@ def insec_des_lab(request):
         token = request.COOKIES.get('token')
         if token == None:
             token = encoded_user
-            response.set_cookie(key='token',value=token.decode('utf-8'), httponly=True, secure=True)
+            response.set_signed_cookie(key='token',value=token.decode('utf-8'), httponly=True, secure=True)
         else:
             token = base64.b64decode(token)
             admin = pickle.loads(token)
@@ -1191,7 +1191,7 @@ def auth_failure_lab3(request):
             session_data = AF_session_id.objects.create(session_id=token, user=USER_A7_LAB3[username]['username'])
             session_data.save()
             response = render(request, "Lab_2021/A7_auth_failure/lab3.html", {"success":True, "failure":False, "username":username})
-            response.set_cookie("session_id", token, httponly=True, secure=True)
+            response.set_signed_cookie("session_id", token, httponly=True, secure=True)
             return response
 
 #-- coding playground for lab2
