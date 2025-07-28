@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from django.shortcuts import render, redirect
 from .views import authentication_decorator
-from hashlib import md5
+from hashlib import sha256
 import jwt
 import datetime
 import re
@@ -155,7 +155,7 @@ def csrf_lab_login(request):
     elif request.method == 'POST':
         password = request.POST.get('password')
         username = request.POST.get('username')
-        password = md5(password.encode()).hexdigest()
+        password = sha256(password.encode()).hexdigest()
         User = CSRF_user_tbl.objects.filter(username=username, password=password)
         if User:
             payload ={
