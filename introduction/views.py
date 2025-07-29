@@ -986,7 +986,7 @@ def ssti_lab(request):
             dirname = os.path.dirname(__file__)
             filename = os.path.join(dirname, f"templates/Lab_2021/A3_Injection/Blogs/{id}.html")
             file = open(filename, "w+") 
-            file.write(blog)
+            file.write(blog.replaceAll("[\r\n]+", ""))
             file.close()
             return redirect(f'blog/{id}')
     else:
